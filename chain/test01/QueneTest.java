@@ -1,4 +1,4 @@
-package com.chain.javase.algorithm.day01;
+package com.chain.algorithm.test.day01;
 
 import org.junit.Test;
 

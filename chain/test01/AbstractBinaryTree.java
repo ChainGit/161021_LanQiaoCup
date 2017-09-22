@@ -1,4 +1,4 @@
-package com.chain.javase.algorithm.day01;
+package com.chain.algorithm.test.day01;
 
 import java.util.List;
 
@@ -9,6 +9,13 @@ public abstract class AbstractBinaryTree<T> {
 	 * 
 	 */
 	public abstract void add(T node);
+
+	/**
+	 * 删除二叉树的节点
+	 * 
+	 * @return
+	 */
+	public abstract boolean delete(T value);
 
 	public abstract int size();
 

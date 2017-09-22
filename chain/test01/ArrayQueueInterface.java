@@ -1,4 +1,4 @@
-package com.chain.javase.algorithm.day01;
+package com.chain.algorithm.test.day01;
 
 public interface ArrayQueueInterface<T> {
 

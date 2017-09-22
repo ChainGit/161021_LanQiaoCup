@@ -39,11 +39,23 @@ public class TreeTest {
 		// 二叉树的中序遍历输出的即是已经排序好的数组
 		// 要求：查找二叉排序树的最接近k的节点
 
-		int k = 100;
+		int k = 24;
 		List<Integer> list = tree.inOrderToList();
 
 		int value = getClosest(list, k);
 		System.out.println(value);
+
+		// 测试二叉树的删除
+		System.out.println(tree.delete(51));
+
+		System.out.println(tree.size());
+		System.out.println(tree.isEmpty());
+
+		System.out.println(tree.bfsToList());
+		System.out.println(tree.preOrderToList());
+		System.out.println(tree.inOrderToList());
+		System.out.println(tree.postOrderToList());
+
 	}
 
 	// 查找二叉排序树的最接近k的节点
