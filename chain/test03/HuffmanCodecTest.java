@@ -43,6 +43,14 @@ public class HuffmanCodecTest {
 		test4(file, true);
 		System.out.println();
 
+		file = "C:\\Temps\\test2.txt";
+
+		test3(file, false);
+		System.out.println();
+
+		test4(file, false);
+		System.out.println();
+
 		file = "C:\\Temps\\圣经.txt";
 
 		test3(file, false);
