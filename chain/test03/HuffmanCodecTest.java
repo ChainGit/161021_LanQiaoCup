@@ -123,6 +123,36 @@ public class HuffmanCodecTest {
 		test4(file, false);
 		System.out.println();
 
+		// 程序(exe)
+		file = "C:\\Temps\\huffman_test\\test.exe";
+		System.out.println(file);
+
+		test3(file, false);
+		System.out.println();
+
+		test4(file, false);
+		System.out.println();
+
+		// 压缩文件(zip)
+		file = "C:\\Temps\\huffman_test\\test.zip";
+		System.out.println(file);
+
+		test3(file, false);
+		System.out.println();
+
+		test4(file, false);
+		System.out.println();
+
+		// pdf
+		file = "C:\\Temps\\huffman_test\\test.pdf";
+		System.out.println(file);
+
+		test3(file, false);
+		System.out.println();
+
+		test4(file, false);
+		System.out.println();
+
 		// 最糟糕的情况
 		System.out.println("worst test");
 		test5();
@@ -181,8 +211,9 @@ public class HuffmanCodecTest {
 
 		double encodeTimes = new BigDecimal(orginLength).divide(new BigDecimal(encodeLength), 2, RoundingMode.HALF_UP)
 				.doubleValue();
-		System.out.println("origin-data-length: " + orginLength + ", encode-data-length: " + encodeLength
-				+ ", encode times: " + encodeTimes + ", encode percent: "
+		String nl = System.getProperty("line.separator");
+		System.out.println("origin-data-length: " + orginLength + nl + "encode-data-length: " + encodeLength + nl
+				+ "encode times: " + encodeTimes + nl + "encode percent: "
 				+ new BigDecimal(1).divide(new BigDecimal(encodeTimes), 2, RoundingMode.HALF_UP).doubleValue());
 
 		System.out.println("decode-data-length: " + (decode.length << 3));
@@ -283,8 +314,9 @@ public class HuffmanCodecTest {
 
 		double encodeTimes = new BigDecimal(orginLength).divide(new BigDecimal(encodeLength), 2, RoundingMode.HALF_UP)
 				.doubleValue();
-		System.out.println("origin-data-length: " + orginLength + ", encode-data-length: " + encodeLength
-				+ ", encode times: " + encodeTimes + ", encode percent: "
+		String nl = System.getProperty("line.separator");
+		System.out.println("origin-data-length: " + orginLength + nl + "encode-data-length: " + encodeLength + nl
+				+ "encode times: " + encodeTimes + nl + "encode percent: "
 				+ new BigDecimal(1).divide(new BigDecimal(encodeTimes), 2, RoundingMode.HALF_UP).doubleValue());
 
 		System.out.println("decode-data-length: " + (decode.length << 3));

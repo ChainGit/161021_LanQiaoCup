@@ -28,6 +28,7 @@ public class HuffmanCodec {
 	 * "encodeRate"：压缩比<br>
 	 * "table"：构建的哈夫曼表，用于压缩(包含字符数值，出现次数，哈夫曼码)<br>
 	 * "tree"：构建的哈夫曼树<br>
+	 * "height"：哈夫曼树的高度<br>
 	 */
 	public static class HuffmanData {
 
@@ -41,12 +42,35 @@ public class HuffmanCodec {
 		private double encodeTimes;
 		private Map<Integer, TreeNode> table;
 		private TreeNode tree;
+		private int height;
+
+		public String detail() {
+			return detail(true);
+		}
+
+		public String detail(boolean detail) {
+			if (table == null || tree == null)
+				return "empty huffman data";
+			String nl = System.getProperty("line.separator");
+			StringBuffer sb = new StringBuffer();
+			if (detail) {
+				sb.append("huffman-tree-height: " + height + nl);
+				sb.append("huffman-statistics-table: " + nl);
+				int i = 0;
+				for (TreeNode n : table.values())
+					sb.append((i++) + ", key: " + n.name + ", times: " + n.val + nl);
+			}
+			sb.append("origin-data-length: " + originLength + nl);
+			sb.append("encode-data-length: " + encodeLength + nl);
+			sb.append("encode-times: " + encodeTimes + nl);
+			sb.append("encode-percent: "
+					+ new BigDecimal(1).divide(new BigDecimal(encodeTimes), 2, RoundingMode.HALF_UP).doubleValue());
+			return sb.toString();
+		}
 
 		@Override
 		public String toString() {
-			return "origin-data-length: " + originLength + ", encode-data-length: " + encodeLength + ", encode-times: "
-					+ encodeTimes + ", encode-percent: "
-					+ new BigDecimal(1).divide(new BigDecimal(encodeTimes), 2, RoundingMode.HALF_UP).doubleValue();
+			return detail(false);
 		}
 	}
 
@@ -87,7 +111,6 @@ public class HuffmanCodec {
 	// 位数据输出缓存（bit buffer）
 	private static class BitArrayOutputBuffer {
 
-		private static final int BYTE_LEN = 8;
 		private static final int DEFAULT_CAPACITY = 32;
 
 		// 存储bit数据的byte数组
@@ -203,7 +226,7 @@ public class HuffmanCodec {
 				// 这里有两种方式，采用图中(a)的方式，编成的霍夫曼码更加均匀
 				boolean isSet = false;
 				for (int i = 0; i < tlst.size(); i++)
-					if (tlst.get(i).val != tn.val) {
+					if (tlst.get(i).val > tn.val) {
 						tlst.add(i, tn);
 						isSet = true;
 						break;
@@ -229,6 +252,8 @@ public class HuffmanCodec {
 
 		// 霍夫曼码的任意一个后置的码都不是前面任意码的前缀
 		private void fun(TreeNode node, int level, byte[] last, int type) {
+			if (data.height < level)
+				data.height = level;
 			byte[] code = node.code;
 			if (code == null)
 				code = node.code = new byte[level];
