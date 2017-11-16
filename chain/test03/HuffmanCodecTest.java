@@ -170,6 +170,9 @@ public class HuffmanCodecTest {
 		System.out.println(data);
 
 		System.out.println("decode-data-length: " + (decode.length << 3));
+
+		System.out.println("detail: ");
+		System.out.println(data.detail());
 	}
 
 	public void test1(String str, boolean show) {
@@ -189,6 +192,9 @@ public class HuffmanCodecTest {
 		System.out.println(data);
 
 		System.out.println("decode-data-length: " + (decode.length << 3));
+
+		System.out.println("detail: ");
+		System.out.println(data.detail());
 	}
 
 	public void test2(String str, boolean show) {
