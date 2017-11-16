@@ -248,6 +248,7 @@ public class HuffmanCodec {
 			// 前序遍历，左0右1
 			// 树的结点，层数，上一层的码，方向
 			fun(data.tree, 0, null, 0);
+			data.height++;
 		}
 
 		// 霍夫曼码的任意一个后置的码都不是前面任意码的前缀
